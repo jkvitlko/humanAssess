@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="calendar">
+        <div class="month">
+
+            <div class="date">
+                <p>{{month}} {{date.getFullYear()}} </p>
+            </div>
+            <span class="prev" (click)="prevMonth()">&#10094; </span>
+            <span class="next" (click)="nextMonth()"> &#10095;</span>
+        </div>
+        <div class="weekdays">
+            <div *ngFor="let week of weeks">{{week}}</div>
+        </div>
+        <div class="days">
+            <div class="prev-date" *ngFor="let prevDay of prevDays"> {{prevDay}} </div>
+            <div *ngFor="let day of days; let i = index" [ngClass]=" day.enable ? 'enable': '' "
+                (click)="selectDate(day, month)">{{day.day}}
+            </div>
+            <div class="next-date" *ngFor="let nextDay of nextMonthDays"> {{nextDay}} </div>
+        </div>
+    </div>
+    <div class="timeslot-container">
+        <div>times you're available</div>
+        <div class="slots" *ngFor="let slots of selectedDateSlots">{{slots}}
+        </div>
+    </div>
+</div>
